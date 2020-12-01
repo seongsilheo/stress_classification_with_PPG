@@ -1,7 +1,4 @@
-# +
-# # !pip install multi-imbalance
 
-# +
 import pandas as pd
 import numpy as np
 import csv
@@ -26,12 +23,9 @@ feats = ['HR_mean','HR_std','meanNN','SDNN','medianNN','meanSD','SDSD','RMSSD','
 WINDOW_SIZE = '120'
 
 NOISE = ['ens_1','bp_ens_1','bp_time_ens_1']
-
-NOISE = ['original_1', 'bp_1', 'bp_time_1']
-
 NOISE = ['bp_1', 'bp_time_1']
+
 subjects = [2,3,4,5,6,7,8,9,10,11,13,14,15,16,17]
-#subjects = [2,3,4,6,7,8,9,10,11,13,14,15,16,17]
 
 # +
 from collections import Counter
