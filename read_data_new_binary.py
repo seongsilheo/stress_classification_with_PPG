@@ -9,14 +9,9 @@ import pandas as pd
 from scipy.interpolate import UnivariateSpline
 from preprocessing_tool.feature_extraction import *
 # +
-WINDOW_IN_SECONDS = 120  # 120 / 180 / 300
-NOISE = ['','freq_','freq_time_','freq_time_ens_']    
+WINDOW_IN_SECONDS = 120  # 120 / 180 / 300  
 
-NOISE = ['freq_time_ens_1','freq_time_ens_2','freq_time_ens_3']
-NOISE = ['freq_time_ens_1']
-
-NOISE = ['ens_1','bp_ens_1','bp_time_ens_1']
-#NOISE = ['bp_1']
+NOISE = ['bp_time_ens_1']
 
 
 # +
@@ -167,8 +162,7 @@ def make_patient_data(subject_id, ma_usage):
     global savePath
     global WINDOW_IN_SECONDS
     
-    temp_ths = [1.0,2.0,1.8,1.5] #[1.1,2.2,2.0,1.9] 
-      #2.0->1.8  1.5 -> 1.3 1.7 -> 1.5 [0.9,2.0,1.5,1.7]
+    temp_ths = [1.0,2.0,1.8,1.5] 
     clean_df = pd.read_csv('clean_signal_by_rate.csv',index_col=0)
     cycle = 15
     
@@ -187,7 +181,7 @@ def make_patient_data(subject_id, ma_usage):
 
 
     #여기서 signal preprocessing 
-    bp_bvp = butter_bandpassfilter(df_BVP, 0.5, 10, fs_dict['BVP'], order=2) # 0.5, 5 -> 0.5,10
+    bp_bvp = butter_bandpassfilter(df_BVP, 0.5, 10, fs_dict['BVP'], order=2) 
     
     if BP:   
         df['BVP'] = bp_bvp
@@ -249,7 +243,7 @@ BP, FREQ, TIME, ENSEMBLE = False, False, False, False
 subject_ids = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17]
 
 feat_names = None
-savePath = '27_features_ppg_test_2/ens/3'
+savePath = '27_features_ppg_test_/bi/ens/3'
 
 if not os.path.exists(savePath):
     os.makedirs(savePath)
@@ -284,10 +278,4 @@ for n in NOISE:
     print('total_Window_len: ',total_window_len)
     print('Processing complete.', n)
     total_window_len = 0
-# +
-#subject_ids = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17]
-#savePath = '27_features_ppg_test/LMM/freq_time'
-
-#combine_files(subject_ids)
-# -
 
