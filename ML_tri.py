@@ -1,5 +1,3 @@
-# +
-# # !pip install multi-imbalance
 
 # +
 import pandas as pd
@@ -32,26 +30,10 @@ NOISE = ['ens_1','bp_ens_1','bp_time_ens_1']
 NOISE = ['original_1', 'bp_1', 'bp_time_1']
 NOISE = ['bp_time_1']
 subjects = [2,3,4,5,6,7,8,9,10,11,13,14,15,16,17]
-#subjects = [2,3,4,6,7,8,9,10,11,13,14,15,16,17]
 
 # +
-from imblearn.over_sampling import SMOTE
 from collections import Counter
 
-def over_sampling(X_train, y_train, X_test, y_test):
-    
-    sm = SMOTE(random_state=42)
-    
-    print("b_y_train: ", Counter(y_train))
-    print("b_y_test: ", Counter(y_test))
-    
-    X_train, y_train = sm.fit_resample(X_train, y_train)
-    X_test, y_test = sm.fit_resample(X_test, y_test)
-    
-    print("b_y_train: ", Counter(y_train))
-    print("b_y_test: ", Counter(y_test))
-    
-    return X_train, y_train, X_test, y_test
 
 
 def read_csv(path, feats, testset_num):
@@ -254,9 +236,7 @@ def GB_model(X_train, y_train, X_test, y_test):
 # +
         
 for n in NOISE:
-    
-    #path = '27_features_ppg_9/data_merged_' + n + WINDOW_SIZE + '.csv'
-    #result_path_all = 'result/BGM2/all_features_' + n + WINDOW_SIZE + '.csv'
+
 
     path = '27_features_ppg_test_3/LMM/data_merged_' + n + WINDOW_SIZE + '.csv'
     result_path_all = 'result_3/LMM/all_features_' + n + WINDOW_SIZE + '.csv'
@@ -278,9 +258,6 @@ for n in NOISE:
         X_train = sc.fit_transform(X_train)  
         X_test = sc.transform(X_test)  
 
-
-        # oversampling using SMOTE    
-        #X_train, y_train, X_test, y_test = over_sampling(X_train, y_train, X_test, y_test)
     
         auc_dt, f1_dt, acc_dt = DT_model(X_train, y_train, X_test, y_test)
         auc_rf, f1_rf, acc_rf = RF_model(X_train, y_train, X_test, y_test)
