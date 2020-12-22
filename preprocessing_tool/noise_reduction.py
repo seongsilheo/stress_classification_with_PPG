@@ -317,9 +317,6 @@ def eliminate_noise_in_time(data, fs, ths,cycle=1):
     eliminated_data = []
     index = []
     for x in new_list:
-        #eliminated_data = np.hstack([eliminated_data, data[valley[x*cycle][0]:valley[x*cycle+cycle-1][1]]])
-        #valley[x*cycle][0]:valley[x*cycle+cycle-1][1]
-        #eliminated_data.extend(data[valley[x][0]:valley[x][1]])
         index.extend([x for x in range(valley[x*cycle][0],valley[x*cycle+cycle-1][1],1)])
 
     print(len(data), len(index))
