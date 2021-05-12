@@ -4,12 +4,12 @@ Code implementing the OMDP method introduced in " Stress Detection with Single P
 
 If you use this code in your own work, please cite our paper.
 
-@article{heo2021stress,
-  title={Stress Detection With Single PPG Sensor by Orchestrating Multiple Denoising and Peak-Detecting Methods},
-  author={Heo, Seongsil and Kwon, Sunyoung and Lee, Jaekoo},
-  journal={IEEE Access},
-  volume={9},
-  pages={47777--47785},
-  year={2021},
-  publisher={IEEE}
-}
+    @article{heo2021stress,
+      title={Stress Detection With Single PPG Sensor by Orchestrating Multiple Denoising and Peak-Detecting Methods},
+      author={Heo, Seongsil and Kwon, Sunyoung and Lee, Jaekoo},
+      journal={IEEE Access},
+      volume={9},
+      pages={47777--47785},
+      year={2021},
+      publisher={IEEE}
+    }
