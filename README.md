@@ -22,15 +22,18 @@ with the existing methods: accuracy is 96.50 and the F1 score is 93.36%
 
 https://archive.ics.uci.edu/ml/datasets/WESAD+%28Wearable+Stress+and+Affect+Detection%29
 
+
 ### 2. Data processing
-If you want to apply noise filtering noise elimination, and ensemble, include 'bp', 'time', 'ens' each in variable *NOISE*.
-Change the *main_path* where your WESAD dataset is located.
+If you want to apply noise filtering, noise elimination, and ensemble, include 'bp', 'time', 'ens' each in variable *NOISE*.
+Change the *main_path* where your WESAD dataset is located in.
 
     python read_data_new_binary.py
     python read_data_new_tri.py
     python read_data_new_quad.py
     
+    
 ### 3. Train & Test
+Use same variable *NOISE* as you used in read_data_new_*.py file.
 
     python ML_binary.py
     python ML_tri.py
