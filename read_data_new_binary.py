@@ -8,10 +8,14 @@ import pandas as pd
 
 from scipy.interpolate import UnivariateSpline
 from preprocessing_tool.feature_extraction import *
+
 # +
 WINDOW_IN_SECONDS = 120  # 120 / 180 / 300  
 
-NOISE = ['bp_time_ens_1']
+
+# If you want to apply noise filtering(band-pass filter), noise elimination, and ensemble, include 'bp','time','ens' each in variable NOISE.
+NOISE = ['bp_time_ens']
+main_path='/home/sheo1/stress_classification_with_PPG/WESAD/'
 
 
 # +
@@ -167,7 +171,7 @@ def make_patient_data(subject_id, ma_usage):
     cycle = 15
     
     # Make subject data object for Sx
-    subject = SubjectData(main_path='/root/Desktop/workspace/seongsil/stress-detection/WESAD/', subject_number=subject_id)
+    subject = SubjectData(main_path=main_path, subject_number=subject_id)
     
     # Empatica E4 data
     e4_data_dict = subject.get_wrist_data()
@@ -193,7 +197,7 @@ def make_patient_data(subject_id, ma_usage):
         df['BVP'] = bp_bvp
         
         signal_01_percent = int(len(df_BVP) * 0.001)
-        print(signal_01_percent, int(clean_df.loc[subject_id]['index']))
+        #print(signal_01_percent, int(clean_df.loc[subject_id]['index']))
         clean_signal = df_BVP[int(clean_df.loc[subject_id]['index']):int(clean_df.loc[subject_id]['index'])+signal_01_percent]
         ths = statistic_threshold(clean_signal, fs_dict['BVP'], temp_ths)
         len_before, len_after, time_signal_index = eliminate_noise_in_time(df['BVP'].to_numpy(), fs_dict['BVP'], ths, cycle)
@@ -241,9 +245,10 @@ print(name)
 total_window_len = 0
 BP, FREQ, TIME, ENSEMBLE = False, False, False, False
 subject_ids = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17]
+subject_ids = [10,11]
 
 feat_names = None
-savePath = '27_features_ppg_test_/bi/ens/3'
+savePath = '27_features_ppg_test/bi/ens/3'
 
 if not os.path.exists(savePath):
     os.makedirs(savePath)
@@ -252,18 +257,14 @@ if not os.path.exists(savePath):
 for n in NOISE:
     if 'bp' in n.split('_'):
         BP = True
-    if 'freq' in n.split('_'):
-        FREQ = True
     if 'time' in n.split('_'):
         TIME = True
     if 'ens' in n.split('_'):
         ENSEMBLE = True
-        
-    print(BP, FREQ, TIME, ENSEMBLE)
 
 
     subject_feature_path = '/subject_feature_' + n + str(WINDOW_IN_SECONDS)
-    merged_path = '/data_merged_' + n + str(WINDOW_IN_SECONDS) +'.csv'
+    merged_path = '/data_merged_' + n +'.csv'
     
     if not os.path.exists(savePath + subject_feature_path):
         os.makedirs(savePath + subject_feature_path)

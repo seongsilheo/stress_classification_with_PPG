@@ -25,11 +25,8 @@ feats = ['HR_mean','HR_std','meanNN','SDNN','medianNN','meanSD','SDSD','RMSSD','
 
 WINDOW_SIZE = '120'
 
-NOISE = ['original_1','bp_1','bp_time_1']
-#NOISE = ['bp_1','bp_time_1']
-NOISE = ['bp_1']
 
-#NOISE = ['ens_1','bp_ens_1','bp_time_ens_1']
+NOISE = ['bp_time_ens']
 subjects = [2,3,4,5,6,7,8,9,10,11,13,14,15,16,17]
 
 
@@ -38,7 +35,7 @@ from collections import Counter
 
 
 def read_csv(path, feats, testset_num):
-    print("testset num: ",testset_num)
+    #print("testset num: ",testset_num)
     df = pd.read_csv(path, index_col = 0)
     
     df = df[feats]
@@ -161,8 +158,9 @@ def GB_model(X_train, y_train, X_test, y_test):
 for n in NOISE:
     
 
-    path = '27_features_ppg_test_2/SFA/data_merged_' + n + WINDOW_SIZE + '.csv'
-    result_path_all = 'result_2/SFA/all_features_' + n + WINDOW_SIZE + '.csv'
+    path = '27_features_ppg_test/bi/ens/3/data_merged_' + n + '.csv'
+    result_path_all = 'result/bi/ens/3/all_features_' + n + '.csv'
+    result_path_all = 'bb.csv'
 
     DT_AUC, DT_F1, DT_ACC = [], [], []
     RF_AUC, RF_F1, RF_ACC = [], [], []

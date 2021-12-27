@@ -26,9 +26,7 @@ feats = ['HR_mean','HR_std','meanNN','SDNN','medianNN','meanSD','SDSD','RMSSD','
          'total_power','lfp','hfp','SD1','SD2','pA','pQ','ApEn','shanEn','D2','subject','label']
 WINDOW_SIZE = '120'
 
-NOISE = ['ens_1','bp_ens_1','bp_time_ens_1']
-NOISE = ['original_1', 'bp_1', 'bp_time_1']
-NOISE = ['bp_time_1']
+NOISE = ['bp_time_ens']
 subjects = [2,3,4,5,6,7,8,9,10,11,13,14,15,16,17]
 
 # +

@@ -3,7 +3,7 @@
 
 # +
 import sys
-sys.path.append("/root/Desktop/workspace/stress-classification/preprocessing_tool/") 
+sys.path.append("/home/sheo1/stress_classification_with_PPG/preprocessing_tool/") 
 
 from noise_reduction import *
 from peak_detection import *

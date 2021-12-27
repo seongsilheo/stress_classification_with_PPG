@@ -11,10 +11,8 @@ from preprocessing_tool.feature_extraction import *
 # # +
 WINDOW_IN_SECONDS = 120  # 120 / 180 / 300
 
-NOISE = ['ens_1','bp_ens_1','bp_time_ens_1']
-NOISE = ['original_1','bp_1','bp_time_1']
-#NOISE = ['bp_time_ens_1']
-
+NOISE = ['bp_time_ens']
+main_path='/home/sheo1/stress_classification_with_PPG/WESAD/'
 
 # +
 # E4 (wrist) Sampling Frequencies
@@ -147,7 +145,7 @@ def make_patient_data(subject_id, ma_usage):
     cycle = 15
     
     # Make subject data object for Sx
-    subject = SubjectData(main_path='/root/Desktop/workspace/seongsil/stress-detection/WESAD/', subject_number=subject_id)
+    subject = SubjectData(main_path=main_path, subject_number=subject_id)
     
     # Empatica E4 data
     e4_data_dict = subject.get_wrist_data()
@@ -254,15 +252,12 @@ if not os.path.exists(savePath):
 for n in NOISE:
     if 'bp' in n.split('_'):
         BP = True
-    if 'freq' in n.split('_'):
-        FREQ = True
     if 'time' in n.split('_'):
         TIME = True
     if 'ens' in n.split('_'):
         ENSEMBLE = True
         
-    print(BP, FREQ, TIME, ENSEMBLE)
-    
+
 
     subject_feature_path = '/subject_feature_' + n + str(WINDOW_IN_SECONDS)
     merged_path = '/data_merged_' + n + str(WINDOW_IN_SECONDS) +'.csv'

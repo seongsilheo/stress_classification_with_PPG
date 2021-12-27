@@ -6,7 +6,6 @@ from scipy import fft, ifft
 from scipy import fftpack
 from scipy.stats import kurtosis, skew
 from scipy.signal import butter, lfilter
-from statsmodels.graphics import tsaplots
 from scipy import stats
 from sklearn.linear_model import LinearRegression
 
