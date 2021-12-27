@@ -33,7 +33,7 @@ Change the *main_path* where your WESAD dataset is located in.
     
     
 ### 3. Train & Test
-Use same variable *NOISE* as you used in read_data_new_*.py file.
+Use the same variable *NOISE* as you used in read_data_new_*.py file.
 
     python ML_binary.py
     python ML_tri.py
