@@ -1,6 +1,6 @@
 # Stress Detection with Single PPG sensor by Orchestrating Multiple Denoising and Peak Detection Method (IEEE ACCESS 2021)
 
-Code implementing the OMDP method introduced in "Stress Detection with Single PPG sensor by Orchestrating Multiple Denoising and Peak Detection Method" by Seongsil Heo, Sunyoung Kwon, and Jaekoo Lee*.
+Code implementing the OMDP method introduced in "Stress Detection with Single PPG sensor by Orchestrating Multiple Denoising and Peak Detection Method" by Seongsil Heo, Sunyoung Kwon, and Jaekoo Lee.
 
 ![block-diagram](https://user-images.githubusercontent.com/44438752/147434917-dc11f55e-3ee3-4f97-84fa-f74aaf9f0f51.png)
 
